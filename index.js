@@ -10,9 +10,9 @@ const generateSVG = ({
 }) => 
 `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
 
-<polygon points="${shape}" fill="${shapeColour}"/>
+<${shape} fill="${shapeColour}"/>
 
-<text x="150" y="125" font-size="60" text-anchor="middle" fill="${textColour}">${text}</text>
+<text x="150" y="125" font-size="50" text-anchor="middle" fill="${textColour}">${text}</text>
 
 </svg>`;
 
@@ -40,13 +40,14 @@ inquirer.prompt([
     },
 ]).then((answers) => {
     if (answers.shape === "Triangle") {
-        const newShape = new Triangle();
+        const newShape = new Triangle('polygon points="150,30 30,150 270,150"');
         shape = newShape.polyPoints;    
     }else if (answers.shape === "Circle") {
-        const newShape = new Circle();
+        const newShape = new Circle('circle cx="150" cy="100" r="80"');
         shape = newShape.polyPoints;
+
     }else if (answers.shape === "Square") {
-        const newShape = new Square();
+        const newShape = new Square('polygon points="50,30 250,30 250,230 50,230"');
         shape = newShape.polyPoints;
     }
 

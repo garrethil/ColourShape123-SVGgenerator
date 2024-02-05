@@ -21,6 +21,12 @@ inquirer.prompt([
         type: "input",
         name: "text",
         message: "What 3 letter would you like in your svg?",
+        validate: function(input) {
+            if (input.trim().length > 3) {
+                return 'please only enter 3 or fewer characters';
+            }
+            return true;
+        }
     },
     {
         type: "input",
@@ -43,7 +49,7 @@ inquirer.prompt([
         const newShape = new Triangle('polygon points="150,30 30,150 270,150"');
         shape = newShape.polyPoints;    
     }else if (answers.shape === "Circle") {
-        const newShape = new Circle('circle cx="150" cy="100" r="80"');
+        const newShape = new Circle('circle cx="150" cy="105" r="85"');
         shape = newShape.polyPoints;
 
     }else if (answers.shape === "Square") {
